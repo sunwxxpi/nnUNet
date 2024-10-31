@@ -986,6 +986,15 @@ class nnUNetTrainer(object):
             target = target.to(self.device, non_blocking=True)
 
         self.optimizer.zero_grad(set_to_none=True)
+        
+        # from torchinfo import summary
+        # summary(self.network, 
+        #         input_size=tuple(data.shape), 
+        #         col_width=20, 
+        #         depth=10, 
+        #         row_settings=["depth", "var_names"], 
+        #         col_names=["input_size", "kernel_size", "output_size", "params_percent"])
+        
         # Autocast can be annoying
         # If the device_type is 'cpu' then it's slow as heck and needs to be disabled.
         # If the device_type is 'mps' then it will complain that mps is not implemented, even if enabled=False is set. Whyyyyyyy. (this is why we don't make use of enabled=False)
