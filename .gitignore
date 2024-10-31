@@ -115,5 +115,6 @@ ENV/
 
 !documentation/assets/scribble_example.png
 
-data
+data/nnUNet_raw
+data/nnUNet_results
 results
