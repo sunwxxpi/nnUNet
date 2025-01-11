@@ -12,7 +12,7 @@ class nnUNetCustomTrainer(nnUNetTrainer):
                  device: torch.device = torch.device('cuda')):
         super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
         # Learning Rate
-        self.initial_lr = 3e-4
+        self.initial_lr = 1e-2
         
     # def _do_i_compile(self):
         # return False
@@ -32,13 +32,17 @@ class nnUNetCustomTrainer(nnUNetTrainer):
             ).to(self.device)
             
             from torchinfo import summary
-            summary(self.network, 
+            torchinfo_summary = str(summary(self.network, 
                 input_size=(16, 1, 512, 512),  # 2D
                 # input_size=(16, 1, 32, 384, 320),  # 3D
                 col_width=20, 
                 depth=10, 
                 row_settings=["depth", "var_names"], 
-                col_names=["input_size", "kernel_size", "output_size", "params_percent"])
+                col_names=["input_size", "kernel_size", "output_size", "params_percent"]))
+            
+            output_file = "model_summary.txt"
+            with open(output_file, "w") as file:
+                file.write(torchinfo_summary)
             
             # compile network for free speedup
             if self._do_i_compile():

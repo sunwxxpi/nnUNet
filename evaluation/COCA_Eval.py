@@ -71,9 +71,10 @@ filenames.sort()
 
 seg_metrics = OrderedDict()
 seg_metrics['Name'] = list()
-label_tolerance = OrderedDict({'Left Anterior Descending Artery': 1, 
-                               'Left Circumflex Artery': 2, 
-                               'Right Coronary Artery': 3})
+label_tolerance = OrderedDict({'Left Coronary Artery': 1, 
+                               'Left Anterior Descending Artery': 2, 
+                               'Left Circumflex Artery': 3, 
+                               'Right Coronary Artery': 4})
 
 for cardiovascular in label_tolerance.keys():
     seg_metrics[f'{cardiovascular}_DSC'] = list()

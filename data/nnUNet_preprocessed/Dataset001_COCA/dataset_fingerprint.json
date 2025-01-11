@@ -2,12 +2,12 @@
     "foreground_intensity_properties_per_channel": {
         "0": {
             "max": 2826.0,
-            "mean": 1223.2043595897762,
+            "mean": 1222.871826171875,
             "median": 1189.0,
             "min": 804.0,
-            "percentile_00_5": 1016.0,
-            "percentile_99_5": 1807.0,
-            "std": 133.03651991499345
+            "percentile_00_5": 1017.0,
+            "percentile_99_5": 1801.0,
+            "std": 132.64389038085938
         }
     },
     "median_relative_size_after_cropping": 1.0,

@@ -4,9 +4,10 @@
     },
     "labels": {
         "background": 0,
-        "left anterior descending artery": 1,
-        "left circumflex artery": 2,
-        "right coronary artery": 3
+        "left coronary artery": 1,
+        "left anterior descending artery": 2,
+        "left circumflex artery": 3,
+        "right coronary artery": 4
     },
     "numTraining": 300,
     "file_ending": ".nii.gz",
