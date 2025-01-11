@@ -232,10 +232,10 @@ case_avg_DSC_2d = dataframe_2D[dsc_cols_2d].mean(axis=0)
 case_avg_AP_2d  = dataframe_2D[ap_cols_2d].mean(axis=0)
 
 print(20 * '>')
-print(f"Average DSC for {case_avg_DSC_2d.mean():.4f}")
-print(f"Average AP  for {case_avg_AP_2d.mean():.4f}")
+print(f"Average DSC for {basename(seg_path)} [LesionOnly]: {case_avg_DSC_2d.mean():.4f}")
+print(f"Average AP  for {basename(seg_path)} [LesionOnly]: {case_avg_AP_2d.mean():.4f}")
 
-print("\nCardiovascular-wise Average (2D) DSC, AP:")
+print("\nCardiovascular-wise Average (2D [LesionOnly]) DSC, AP:")
 for cardiovascular in label_tolerance.keys():
     dsc_col_name = f"{cardiovascular}_2D_DSC"
     ap_col_name  = f"{cardiovascular}_2D_AP"
