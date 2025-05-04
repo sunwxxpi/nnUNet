@@ -7,12 +7,14 @@ from nnunetv2.training.loss.deep_supervision import DeepSupervisionWrapper
 from nnunetv2.utilities.label_handling.label_handling import determine_num_input_channels
 from torch.nn.parallel import DistributedDataParallel as DDP
 
-class nnUNetCustomTrainer(nnUNetTrainer):
+class nnUNetCustomTrainer3D(nnUNetTrainer):
     def __init__(self, plans: dict, configuration: str, fold: int, dataset_json: dict, unpack_dataset: bool = True,
                  device: torch.device = torch.device('cuda')):
         super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
         # Learning Rate
         self.initial_lr = 1e-2
+        # self.initial_lr = 1e-3
+        # self.initial_lr = 3e-4
         
     # def _do_i_compile(self):
         # return False
@@ -33,14 +35,13 @@ class nnUNetCustomTrainer(nnUNetTrainer):
             
             from torchinfo import summary
             torchinfo_summary = str(summary(self.network, 
-                input_size=(16, 1, 512, 512),  # 2D
-                # input_size=(16, 1, 32, 384, 320),  # 3D
+                input_size=(16, 1, 64, 256, 256),
                 col_width=20, 
                 depth=10, 
                 row_settings=["depth", "var_names"], 
                 col_names=["input_size", "kernel_size", "output_size", "params_percent"]))
             
-            output_file = "model_summary.txt"
+            output_file = "model_summary_3d.txt"
             with open(output_file, "w") as file:
                 file.write(torchinfo_summary)
             
